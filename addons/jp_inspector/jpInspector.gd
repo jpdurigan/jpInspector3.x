@@ -6,8 +6,9 @@ const CATEGORY_KEY_TITLE = "title"
 const CATEGORY_KEY_ICON = "icon"
 
 const GROUP_PREFIX = "_g_"
-const GROUP_KEY_VARIABLES = "variables"
 const GROUP_KEY_TITLE = "title"
+const GROUP_KEY_PREFIX = "prefix"
+const GROUP_KEY_VARIABLES = "variables"
 
 
 static func Category(title: String = "", icon: String = "") -> Dictionary:
@@ -17,12 +18,18 @@ static func Category(title: String = "", icon: String = "") -> Dictionary:
 	}
 
 
-static func Group(variables: Array = [], title: String = "") -> Dictionary:
+static func Group(prefix: String = "", title: String = "") -> Dictionary:
+	return {
+		GROUP_KEY_PREFIX: prefix,
+		GROUP_KEY_TITLE: title,
+	}
+
+
+static func GroupCustom(variables: Array = [], title: String = "") -> Dictionary:
 	return {
 		GROUP_KEY_VARIABLES: variables,
 		GROUP_KEY_TITLE: title,
 	}
-
 
 
 static func get_category_title(object: Object, path: String) -> String:
@@ -44,15 +51,28 @@ static func get_category_icon(object: Object, path: String) -> String:
 
 
 static func get_group_variables(object: Object, path: String) -> Array:
-	var variables: Array
+	var variables: Array = []
 	var group: Dictionary = _eval_from_object(object, path)
-	if _dict_has_string(group, GROUP_KEY_VARIABLES):
+	
+	# Custom group
+	if _dict_has_array(group, GROUP_KEY_VARIABLES):
 		variables = group[GROUP_KEY_VARIABLES]
+	
+	# Group with custom prefix
+	if _dict_has_string(group, GROUP_KEY_PREFIX):
+		var prefix = group[GROUP_KEY_PREFIX]
+		for property in object.get_property_list():
+			var name: String = property.name
+			if name != path and name.begins_with(prefix):
+				variables.append(name)
+	
+	# Default group
 	if variables.empty():
 		for property in object.get_property_list():
 			var name: String = property.name
 			if name != path and name.begins_with(path):
 				variables.append(name)
+	
 	return variables
 
 
@@ -101,5 +121,13 @@ static func _dict_has_string(dict: Dictionary, key) -> bool:
 	return (
 		dict.has(key)
 		and typeof(dict[key]) == TYPE_STRING
+		and not dict[key].empty()
+	)
+
+
+static func _dict_has_array(dict: Dictionary, key) -> bool:
+	return (
+		dict.has(key)
+		and typeof(dict[key]) == TYPE_ARRAY
 		and not dict[key].empty()
 	)

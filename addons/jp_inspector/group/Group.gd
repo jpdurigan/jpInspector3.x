@@ -31,7 +31,6 @@ func populate(object: Object, path: String, update_variables_funcref: FuncRef, i
 		_update_variables()
 	_check.set_pressed_no_signal(is_group_visible)
 	_button.connect("toggled", self, "_on_button_toggled")
-	
 
 
 func is_group_visible() -> bool:

@@ -35,16 +35,33 @@ export var _g_group_1_var_grp1_int: int
 export var _g_group_1_var_grp1_str: String
 
 export var _g_group_2: Dictionary = jpInspector.Group()
-export var _g_group_2_var_grp1_bool: bool
-export var _g_group_2_var_grp1_int: int
-export var _g_group_2_var_grp1_str: String
+export var _g_group_2_var_grp2_bool: bool
+export var _g_group_2_var_grp2_int: int
+export var _g_group_2_var_grp2_str: String
 
-# Simple group with custom title
+# Group from prefix
+export var _g_group_3: Dictionary = jpInspector.Group("group3")
+export var group3_var_grp3_bool: bool
+export var group3_var_grp3_int: int
+export var group3_var_grp3_str: String
 
 # Group from a list of properties
+export var _g_group_4: Dictionary = jpInspector.GroupCustom(["var_grp4_bool", "var_grp4_int", "var_grp4_str"])
+export var var_grp4_bool: bool
+export var var_grp4_int: int
+export var var_grp4_str: String
+
+# Group with custom title
+export var _g_group_5: Dictionary = jpInspector.Group("group5", "My Group #5")
+export var group5_var_grp5_bool: bool
+export var group5_var_grp5_int: int
+export var group5_var_grp5_str: String
 
 # Group from a list of properties with custom title
-
+export var _g_group_6: Dictionary = jpInspector.GroupCustom(["var_grp6_bool", "var_grp6_int", "var_grp6_str"], "My Group #6")
+export var var_grp6_bool: bool
+export var var_grp6_int: int
+export var var_grp6_str: String
 
 ## Buttons
 
