@@ -9,6 +9,9 @@
 
 [node name="Default" type="Node" parent="."]
 script = ExtResource( 1 )
+group3_var_grp3_bool = true
+group3_var_grp3_int = 123
+group3_var_grp3_str = "abc"
 
 [node name="DefaultTool" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -32,6 +35,9 @@ _g_group_3 = {
 "prefix": "group3",
 "title": ""
 }
+group3_var_grp3_bool = true
+group3_var_grp3_int = 123
+group3_var_grp3_str = "abc"
 _g_group_4 = {
 "title": "",
 "variables": [ "var_grp4_bool", "var_grp4_int", "var_grp4_str" ]
@@ -59,6 +65,9 @@ _b_button_2 = {
 
 [node name="Custom" type="Node" parent="."]
 script = ExtResource( 3 )
+group3_var_grp3_bool = true
+group3_var_grp3_int = 123
+group3_var_grp3_str = "abc"
 
 [node name="CustomTool" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -82,6 +91,9 @@ gro_group_3 = {
 "prefix": "group3",
 "title": ""
 }
+group3_var_grp3_bool = true
+group3_var_grp3_int = 123
+group3_var_grp3_str = "abc"
 gro_group_4 = {
 "title": "",
 "variables": [ "var_grp4_bool", "var_grp4_int", "var_grp4_str" ]
