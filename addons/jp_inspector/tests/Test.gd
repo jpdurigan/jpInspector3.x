@@ -29,6 +29,15 @@ export var var_cat4_str: String
 ## Groups
 
 # Simple group
+export var _g_group_1: Dictionary
+export var _g_group_1_var_grp1_bool: bool
+export var _g_group_1_var_grp1_int: int
+export var _g_group_1_var_grp1_str: String
+
+export var _g_group_2: Dictionary = jpInspector.Group()
+export var _g_group_2_var_grp1_bool: bool
+export var _g_group_2_var_grp1_int: int
+export var _g_group_2_var_grp1_str: String
 
 # Simple group with custom title
 
