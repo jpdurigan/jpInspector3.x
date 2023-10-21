@@ -14,9 +14,16 @@ margin_right = 1024.0
 margin_bottom = 600.0
 alignment = 1
 
+[node name="Icon" type="TextureRect" parent="Content"]
+margin_left = 482.0
+margin_right = 482.0
+margin_bottom = 600.0
+expand = true
+stretch_mode = 6
+
 [node name="Label" type="Label" parent="Content"]
-margin_left = 484.0
+margin_left = 486.0
 margin_top = 293.0
-margin_right = 539.0
+margin_right = 541.0
 margin_bottom = 307.0
 text = "Category"

@@ -23,6 +23,14 @@ static func get_category_title(object: Object, path: String) -> String:
 	return title
 
 
+static func get_category_icon(object: Object, path: String) -> String:
+	var icon: String = ""
+	var category: Dictionary = _eval_from_object(object, path)
+	if _dict_has_string(category, CATEGORY_KEY_ICON):
+		icon = category[CATEGORY_KEY_ICON]
+	return icon
+
+
 static func _eval_from_object(object: Object, path: String) -> Dictionary:
 	var dict: Dictionary = {}
 	var script: Script = object.get_script()

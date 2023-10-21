@@ -20,6 +20,10 @@ export var var_cat3_int: int
 export var var_cat3_str: String
 
 # Category with custom title and icon
+export var _c_category_4: Dictionary = jpInspector.Category("My Category #4", "res://icon.png")
+export var var_cat4_bool: bool
+export var var_cat4_int: int
+export var var_cat4_str: String
 
 
 ## Groups
