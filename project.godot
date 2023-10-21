@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "jpInspector",
+"language": "GDScript",
+"path": "res://addons/jp_inspector/jpInspector.gd"
+} ]
+_global_script_class_icons={
+"jpInspector": ""
+}
+
 [application]
 
 config/name="jpInspector 3.x"
