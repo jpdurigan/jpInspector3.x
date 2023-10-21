@@ -1,12 +1,108 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/jp_inspector/tests/Test.gd" type="Script" id=1]
+[ext_resource path="res://addons/jp_inspector/tests/Default.gd" type="Script" id=1]
+[ext_resource path="res://addons/jp_inspector/tests/DefaultTool.gd" type="Script" id=2]
+[ext_resource path="res://addons/jp_inspector/tests/Custom.gd" type="Script" id=3]
+[ext_resource path="res://addons/jp_inspector/tests/CustomTool.gd" type="Script" id=4]
 
 [node name="Test" type="Node"]
+
+[node name="Default" type="Node" parent="."]
 script = ExtResource( 1 )
-var_cat3_bool = true
-var_cat3_int = 123
-var_cat3_str = "abc"
-_g_group_2_var_grp2_bool = true
-_g_group_2_var_grp2_int = 124
-_g_group_2_var_grp2_str = "abc"
+
+[node name="DefaultTool" type="Node" parent="."]
+script = ExtResource( 2 )
+_c_category_2 = {
+"icon": "",
+"title": ""
+}
+_c_category_3 = {
+"icon": "",
+"title": "My Category #3"
+}
+_c_category_4 = {
+"icon": "res://icon.png",
+"title": "My Category #4"
+}
+_g_group_2 = {
+"prefix": "",
+"title": ""
+}
+_g_group_3 = {
+"prefix": "group3",
+"title": ""
+}
+_g_group_4 = {
+"title": "",
+"variables": [ "var_grp4_bool", "var_grp4_int", "var_grp4_str" ]
+}
+_g_group_5 = {
+"prefix": "group5",
+"title": "My Group #5"
+}
+_g_group_6 = {
+"title": "My Group #6",
+"variables": [ "var_grp6_bool", "var_grp6_int", "var_grp6_str" ]
+}
+_b_another_custom_function = {
+"method": "",
+"title": ""
+}
+_b_button_1 = {
+"method": "custom_function",
+"title": ""
+}
+_b_button_2 = {
+"method": "another_custom_function",
+"title": "Another Custom Function :3"
+}
+
+[node name="Custom" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="CustomTool" type="Node" parent="."]
+script = ExtResource( 4 )
+cat_category_2 = {
+"icon": "",
+"title": ""
+}
+cat_category_3 = {
+"icon": "",
+"title": "My Category #3"
+}
+cat_category_4 = {
+"icon": "res://icon.png",
+"title": "My Category #4"
+}
+gro_group_2 = {
+"prefix": "",
+"title": ""
+}
+gro_group_3 = {
+"prefix": "group3",
+"title": ""
+}
+gro_group_4 = {
+"title": "",
+"variables": [ "var_grp4_bool", "var_grp4_int", "var_grp4_str" ]
+}
+gro_group_5 = {
+"prefix": "group5",
+"title": "My Group #5"
+}
+gro_group_6 = {
+"title": "My Group #6",
+"variables": [ "var_grp6_bool", "var_grp6_int", "var_grp6_str" ]
+}
+but_another_custom_function = {
+"method": "",
+"title": ""
+}
+but_button_1 = {
+"method": "custom_function",
+"title": ""
+}
+but_button_2 = {
+"method": "another_custom_function",
+"title": "Another Custom Function :3"
+}

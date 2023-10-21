@@ -76,7 +76,7 @@ export var _b_button_2: Dictionary = jpInspector.FuncButton("another_custom_func
 
 
 func custom_function() -> void:
-	print("Calling custom function!")
+	printt(self, "Calling custom function!")
 
 func another_custom_function() -> void:
-	print("Calling another custom function!")
+	printt(self, "Calling another custom function!")

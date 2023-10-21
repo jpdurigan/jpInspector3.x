@@ -1,16 +1,19 @@
 extends Reference
 class_name jpInspector
 
-const CATEGORY_PREFIX = "_c_"
+const CATEGORY_PREFIX_SETTINGS = "jpInspector/category_prefix"
+const CATEGORY_PREFIX_DEFAULT = "_c_"
 const CATEGORY_KEY_TITLE = "title"
 const CATEGORY_KEY_ICON = "icon"
 
-const GROUP_PREFIX = "_g_"
+const GROUP_PREFIX_SETTINGS = "jpInspector/group_prefix"
+const GROUP_PREFIX_DEFAULT = "_g_"
 const GROUP_KEY_TITLE = "title"
 const GROUP_KEY_PREFIX = "prefix"
 const GROUP_KEY_VARIABLES = "variables"
 
-const BUTTON_PREFIX = "_b_"
+const BUTTON_PREFIX_SETTINGS = "jpInspector/button_prefix"
+const BUTTON_PREFIX_DEFAULT = "_b_"
 const BUTTON_KEY_METHOD = "method"
 const BUTTON_KEY_TITLE = "title"
 
@@ -49,7 +52,7 @@ static func get_category_title(object: Object, path: String) -> String:
 	if _dict_has_string(category, CATEGORY_KEY_TITLE):
 		title = category[CATEGORY_KEY_TITLE]
 	if title.empty():
-		title = path.replace(CATEGORY_PREFIX, "").capitalize()
+		title = path.replace(get_category_prefix(), "").capitalize()
 	return title
 
 
@@ -93,7 +96,7 @@ static func get_group_title(object: Object, path: String) -> String:
 	if _dict_has_string(group, GROUP_KEY_TITLE):
 		title = group[GROUP_KEY_TITLE]
 	if title.empty():
-		title = path.replace(GROUP_PREFIX, "").capitalize()
+		title = path.replace(get_group_prefix(), "").capitalize()
 	return title
 
 
@@ -103,7 +106,7 @@ static func get_button_method(object: Object, path: String) -> String:
 	if _dict_has_string(button, BUTTON_KEY_METHOD):
 		method = button[BUTTON_KEY_METHOD]
 	if method.empty():
-		method = path.replace(BUTTON_PREFIX, "")
+		method = path.replace(get_button_prefix(), "")
 	return method
 
 
@@ -113,8 +116,34 @@ static func get_button_title(object: Object, path: String) -> String:
 	if _dict_has_string(button, BUTTON_KEY_TITLE):
 		title = button[BUTTON_KEY_TITLE]
 	if title.empty():
-		title = path.replace(BUTTON_PREFIX, "").capitalize()
+		title = path.replace(get_button_prefix(), "").capitalize()
 	return title
+
+
+static func get_category_prefix() -> String:
+	return ProjectSettings.get_setting(CATEGORY_PREFIX_SETTINGS)
+
+static func get_group_prefix() -> String:
+	return ProjectSettings.get_setting(GROUP_PREFIX_SETTINGS)
+
+static func get_button_prefix() -> String:
+	return ProjectSettings.get_setting(BUTTON_PREFIX_SETTINGS)
+
+static func add_all_settings() -> void:
+	if not ProjectSettings.has_setting(CATEGORY_PREFIX_SETTINGS):
+		ProjectSettings.set_setting(CATEGORY_PREFIX_SETTINGS, CATEGORY_PREFIX_DEFAULT)
+	ProjectSettings.set_initial_value(CATEGORY_PREFIX_SETTINGS, CATEGORY_PREFIX_DEFAULT)
+	if not ProjectSettings.has_setting(GROUP_PREFIX_SETTINGS):
+		ProjectSettings.set_setting(GROUP_PREFIX_SETTINGS, GROUP_PREFIX_DEFAULT)
+	ProjectSettings.set_initial_value(GROUP_PREFIX_SETTINGS, GROUP_PREFIX_DEFAULT)
+	if not ProjectSettings.has_setting(BUTTON_PREFIX_SETTINGS):
+		ProjectSettings.set_setting(BUTTON_PREFIX_SETTINGS, BUTTON_PREFIX_DEFAULT)
+	ProjectSettings.set_initial_value(BUTTON_PREFIX_SETTINGS, BUTTON_PREFIX_DEFAULT)
+
+static func remove_all_settings() -> void:
+	ProjectSettings.set_setting(CATEGORY_PREFIX_SETTINGS, null)
+	ProjectSettings.set_setting(GROUP_PREFIX_SETTINGS, null)
+	ProjectSettings.set_setting(BUTTON_PREFIX_SETTINGS, null)
 
 
 static func _eval_from_object(object: Object, path: String) -> Dictionary:

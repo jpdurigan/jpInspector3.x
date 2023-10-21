@@ -26,19 +26,19 @@ func parse_property(
 		usage: int
 ) -> bool:
 	if type == TYPE_DICTIONARY:
-		if path.begins_with(jpInspector.CATEGORY_PREFIX):
+		if path.begins_with(jpInspector.get_category_prefix()):
 			var category: Category = CATEGORY_SCENE.instance()
 			category.populate(object, path)
 			add_custom_control(category)
 			return true
 		
-		if path.begins_with(jpInspector.BUTTON_PREFIX):
+		if path.begins_with(jpInspector.get_button_prefix()):
 			var button := FuncButton.new()
 			button.populate(object, path)
 			add_custom_control(button)
 			return true
 		
-		if path.begins_with(jpInspector.GROUP_PREFIX):
+		if path.begins_with(jpInspector.get_group_prefix()):
 			var group: Group = GROUP_SCENE.instance()
 			var is_group_visible: bool = true
 			if _is_group_registered(object, path):
