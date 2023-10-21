@@ -10,6 +10,10 @@ const GROUP_KEY_TITLE = "title"
 const GROUP_KEY_PREFIX = "prefix"
 const GROUP_KEY_VARIABLES = "variables"
 
+const BUTTON_PREFIX = "_b_"
+const BUTTON_KEY_METHOD = "method"
+const BUTTON_KEY_TITLE = "title"
+
 
 static func Category(title: String = "", icon: String = "") -> Dictionary:
 	return {
@@ -29,6 +33,13 @@ static func GroupCustom(variables: Array = [], title: String = "") -> Dictionary
 	return {
 		GROUP_KEY_VARIABLES: variables,
 		GROUP_KEY_TITLE: title,
+	}
+
+
+static func FuncButton(method: String = "", title: String = "") -> Dictionary:
+	return {
+		BUTTON_KEY_METHOD: method,
+		BUTTON_KEY_TITLE: title,
 	}
 
 
@@ -83,6 +94,26 @@ static func get_group_title(object: Object, path: String) -> String:
 		title = group[GROUP_KEY_TITLE]
 	if title.empty():
 		title = path.replace(GROUP_PREFIX, "").capitalize()
+	return title
+
+
+static func get_button_method(object: Object, path: String) -> String:
+	var method: String = ""
+	var button: Dictionary = _eval_from_object(object, path)
+	if _dict_has_string(button, BUTTON_KEY_METHOD):
+		method = button[BUTTON_KEY_METHOD]
+	if method.empty():
+		method = path.replace(BUTTON_PREFIX, "")
+	return method
+
+
+static func get_button_title(object: Object, path: String) -> String:
+	var title: String = ""
+	var button: Dictionary = _eval_from_object(object, path)
+	if _dict_has_string(button, BUTTON_KEY_TITLE):
+		title = button[BUTTON_KEY_TITLE]
+	if title.empty():
+		title = path.replace(BUTTON_PREFIX, "").capitalize()
 	return title
 
 

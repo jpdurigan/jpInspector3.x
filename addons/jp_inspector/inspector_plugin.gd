@@ -6,6 +6,7 @@ const GROUP_SCENE = preload("res://addons/jp_inspector/group/Group.tscn")
 
 const Category = preload("res://addons/jp_inspector/category/Category.gd")
 const Group = preload("res://addons/jp_inspector/group/Group.gd")
+const FuncButton = preload("res://addons/jp_inspector/button/FuncButton.gd")
 
 var groups: Dictionary
 var group_variables: Dictionary
@@ -29,6 +30,12 @@ func parse_property(
 			var category: Category = CATEGORY_SCENE.instance()
 			category.populate(object, path)
 			add_custom_control(category)
+			return true
+		
+		if path.begins_with(jpInspector.BUTTON_PREFIX):
+			var button := FuncButton.new()
+			button.populate(object, path)
+			add_custom_control(button)
 			return true
 		
 		if path.begins_with(jpInspector.GROUP_PREFIX):

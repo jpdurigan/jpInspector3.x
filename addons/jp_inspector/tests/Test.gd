@@ -1,3 +1,4 @@
+#tool
 extends Node
 
 ## Categories
@@ -66,5 +67,16 @@ export var var_grp6_str: String
 ## Buttons
 
 # Simple button
+export var _b_custom_function: Dictionary
+export var _b_another_custom_function: Dictionary = jpInspector.FuncButton()
+export var _b_button_1: Dictionary = jpInspector.FuncButton("custom_function")
 
 # Simple button with custom title
+export var _b_button_2: Dictionary = jpInspector.FuncButton("another_custom_function", "Another Custom Function :3")
+
+
+func custom_function() -> void:
+	print("Calling custom function!")
+
+func another_custom_function() -> void:
+	print("Calling another custom function!")

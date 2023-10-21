@@ -4,3 +4,9 @@
 
 [node name="Test" type="Node"]
 script = ExtResource( 1 )
+var_cat3_bool = true
+var_cat3_int = 123
+var_cat3_str = "abc"
+_g_group_2_var_grp2_bool = true
+_g_group_2_var_grp2_int = 124
+_g_group_2_var_grp2_str = "abc"
