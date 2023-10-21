@@ -17,6 +17,9 @@ const BUTTON_PREFIX_DEFAULT = "_b_"
 const BUTTON_KEY_METHOD = "method"
 const BUTTON_KEY_TITLE = "title"
 
+const EVAL_GDSCRIPT_SETTINGS = "jpInspector/eval_gdscript_for_non_tool_scripts"
+const EVAL_GDSCRIPT_DEFAULT = true
+
 
 static func Category(title: String = "", icon: String = "") -> Dictionary:
 	return {
@@ -129,6 +132,9 @@ static func get_group_prefix() -> String:
 static func get_button_prefix() -> String:
 	return ProjectSettings.get_setting(BUTTON_PREFIX_SETTINGS)
 
+static func should_eval_gdscript() -> String:
+	return ProjectSettings.get_setting(EVAL_GDSCRIPT_SETTINGS)
+
 static func add_all_settings() -> void:
 	if not ProjectSettings.has_setting(CATEGORY_PREFIX_SETTINGS):
 		ProjectSettings.set_setting(CATEGORY_PREFIX_SETTINGS, CATEGORY_PREFIX_DEFAULT)
@@ -139,17 +145,21 @@ static func add_all_settings() -> void:
 	if not ProjectSettings.has_setting(BUTTON_PREFIX_SETTINGS):
 		ProjectSettings.set_setting(BUTTON_PREFIX_SETTINGS, BUTTON_PREFIX_DEFAULT)
 	ProjectSettings.set_initial_value(BUTTON_PREFIX_SETTINGS, BUTTON_PREFIX_DEFAULT)
+	if not ProjectSettings.has_setting(EVAL_GDSCRIPT_SETTINGS):
+		ProjectSettings.set_setting(EVAL_GDSCRIPT_SETTINGS, EVAL_GDSCRIPT_DEFAULT)
+	ProjectSettings.set_initial_value(EVAL_GDSCRIPT_SETTINGS, EVAL_GDSCRIPT_DEFAULT)
 
 static func remove_all_settings() -> void:
 	ProjectSettings.set_setting(CATEGORY_PREFIX_SETTINGS, null)
 	ProjectSettings.set_setting(GROUP_PREFIX_SETTINGS, null)
 	ProjectSettings.set_setting(BUTTON_PREFIX_SETTINGS, null)
+	ProjectSettings.set_setting(EVAL_GDSCRIPT_SETTINGS, null)
 
 
 static func _eval_from_object(object: Object, path: String) -> Dictionary:
 	var dict: Dictionary = {}
 	var script: Script = object.get_script()
-	if script != null and not script.is_tool():
+	if script != null and not script.is_tool() and should_eval_gdscript():
 		var code: String = script.source_code
 		code = code.right(code.find(path))
 		code = code.left(code.find("\n"))

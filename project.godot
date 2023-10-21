@@ -36,6 +36,7 @@ common/drop_mouse_on_gui_input_disabled=true
 category_prefix="cat_"
 group_prefix="gro_"
 button_prefix="but_"
+eval_gdscript_for_non_tool_scripts=false
 
 [physics]
 
