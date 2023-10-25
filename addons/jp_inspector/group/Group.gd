@@ -27,9 +27,9 @@ func populate(object: Object, path: String, update_variables_funcref: FuncRef, i
 	_label.text = title
 	
 	if is_group_visible() != is_group_visible:
-		_button.set_pressed_no_signal(is_group_visible)
+		_button.set_pressed(is_group_visible)
 		_update_variables()
-	_check.set_pressed_no_signal(is_group_visible)
+	_check.set_pressed(is_group_visible)
 	_button.connect("toggled", self, "_on_button_toggled")
 
 
