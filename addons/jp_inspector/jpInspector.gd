@@ -167,7 +167,7 @@ static func _eval_from_object(object: Object, path: String) -> Dictionary:
 		if idx >= 0:
 			code = code.right(code.find("jpInspector"))
 			dict = _eval_gdscript(code)
-	if dict.empty():
+	if dict.empty() and object.get(path):
 		dict = object.get(path)
 	
 	return dict
