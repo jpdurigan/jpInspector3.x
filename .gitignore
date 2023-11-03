@@ -52,3 +52,15 @@ Temporary Items
 *.icloud
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,godot
+
+
+# Godot Asset Library / Downloads ignore
+README.md
+LICENSE
+project.godot
+icon.png
+default_env.tres
+*.import
+
+# Project specific
+jpInspector.png
